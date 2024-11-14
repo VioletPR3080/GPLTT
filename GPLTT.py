@@ -9,10 +9,9 @@ import msvcrt #仅用于windows系统
 import os
 import json
 from collections import deque
-# version 1.0
 print("space.bilibili.com/167480068")
 print("repo: github.com/VioletPR3080/GPLTT")
-print("按下数字键以选择")
+
 def refresh_options(prompt):
     match prompt:
         case "请选择手柄编号: ":
@@ -192,6 +191,8 @@ listened_key = config["listened_key"]
 delays = deque(maxlen=max_size)
 delays2 = deque(maxlen=int(max_size/2))
 
+print(f"程序运行后测试开始前\033[31m请勿触发待测设备\033[0m, 设备触发时长应小于\033[31m{test_interval_ms}ms\033[0m")
+print("按下数字键以选择")
 # 选择串口
 port_index = let_you_choose("请选择串口端口: ", [port.device for port in serial.tools.list_ports.comports()])
 try:
@@ -201,7 +202,7 @@ except Exception as e:
     input("按回车退出...")
     exit()
 print("串口已连接")
-
+print(" ")
 # 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
 ser.write(send_time_interval.encode('utf-8'))
