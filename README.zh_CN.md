@@ -1,4 +1,4 @@
-- zh_CN [简体中文](README.zh_CN.md)
+- en [English](README.md)(还没弄好)
 
 # 测试原理
 
