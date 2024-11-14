@@ -10,7 +10,7 @@ import os
 import json
 from collections import deque
 # version 1.0
-print("反馈: space.bilibili.com/167480068")
+print("space.bilibili.com/167480068")
 print("repo: github.com/VioletPR3080/GPLTT")
 print("按下数字键以选择")
 def refresh_options(prompt):
@@ -98,7 +98,6 @@ def get_pin_become_low_time():
             pass
     # data = ser.read(1).decode('utf-8')
     # if data=='D':
-    print("已收到开发板信号")
     return time.perf_counter()
 
 def stick_go():
@@ -179,7 +178,7 @@ def show_result(delay):
 config = read_or_create_config()
 stick_threshold = config["stick_threshold"]  # 阈值
 if stick_threshold > default_config["stick_threshold"]:
-    print("阈值过小可能导致无法测试。阈值影响很小，经测试，8000Hz的ps5手柄在阈值为0.05和0.95的测试结果相差不到2ms")
+    print("阈值过小可能导致无法测试。阈值影响很小, 经测试, 8000Hz的ps5手柄在阈值为0.05和0.95的测试结果相差不到2ms")
 if stick_threshold < 0.01 or stick_threshold > 0.99:
     stick_threshold = default_config["stick_threshold"]
     print(f"阈值应在0.01-0.99之间, 自动设置为{stick_threshold}")
@@ -222,7 +221,7 @@ match output_type:
                 judge_axis = trigger_down
         get_end_time = choose_get_end_time(device_type)
         ser.write(b'0')
-        print("\033[31m灯灭后才能进行下次测试操作\033[0m")
+        print("\033[31m开发板灯灭后才能进行下次测试操作\033[0m")
         while True:
             if device_type == 1:
                 pygame.event.pump()
