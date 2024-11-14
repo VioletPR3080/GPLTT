@@ -9,6 +9,7 @@ import msvcrt #仅用于windows系统
 import os
 import json
 from collections import deque
+# version 1.0
 print("反馈: space.bilibili.com/167480068")
 print("按下数字键以选择")
 def refresh_options(prompt):
