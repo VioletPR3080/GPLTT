@@ -202,12 +202,13 @@ except Exception as e:
     exit()
 print("串口已连接")
 
+# 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
 ser.write(send_time_interval.encode('utf-8'))
 output_type = let_you_choose("请选择设备输出类型: ", ["程序检测设备输出", "下位机检测音频输出"])
 match output_type:
     case 0 :
-        # 选择测试类型
+        # 选择设备类型
         device_type = let_you_choose("请选择测试设备类型: ", ["手柄按钮", "手柄摇杆", f"键盘{listened_key}键", "鼠标左键", "鼠标移动"])#("请选择测试设备类型: ", ["手柄按钮", "手柄摇杆", "键盘", "鼠标按键", "鼠标移动"])
         if device_type in [0,1]:
             pygame.init()
