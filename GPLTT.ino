@@ -1,4 +1,4 @@
-#define pin1 15 //负责检测低电平的引脚
+#define pin1 2 //负责检测低电平的引脚
 #define threshold 20 //测试音量，一般手机、switch最大音量为100，电脑300
 #define audioPin A0
 unsigned long startTime;
@@ -9,23 +9,24 @@ int testInterval;
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(pin1, INPUT_PULLUP);
-  Serial.begin(115200);
   digitalWrite(LED_BUILTIN, HIGH);
+  Serial.begin(115200);
   while (!Serial) {
     ;
   }
-  digitalWrite(LED_BUILTIN, LOW);
   while (Serial.available() == 0) {
     ; 
   }// 等待上位机程序发送休眠时间
   String input = Serial.readStringUntil('\n');
   input.trim();
   testInterval = input.toInt() + 30;
+  Serial.println(testInterval);
   while (Serial.available() == 0) {
-    ; 
-  }// 等待Python程序发送指令
+    ;
+  }// 等待上位机程序发送测试模式
   int testType;
   testType = Serial.read();
+  digitalWrite(LED_BUILTIN, LOW);
   if (testType == '0') {
     while (1){
       while (digitalRead(pin1)) {

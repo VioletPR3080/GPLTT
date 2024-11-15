@@ -202,10 +202,17 @@ except Exception as e:
     input("按回车退出...")
     exit()
 print("串口已连接")
-print(" ")
+time.sleep(2)
+# input("按回车开始测试...")
 # 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
 ser.write(send_time_interval.encode('utf-8'))
+print("测试间隔时间已发送")
+while not ser.in_waiting:
+    pass
+print("测试间隔时间已被接收")
+print("  ")
+ser.reset_input_buffer()
 output_type = let_you_choose("请选择设备输出类型: ", ["程序检测设备输出", "下位机检测音频输出"])
 match output_type:
     case 0 :
@@ -224,9 +231,6 @@ match output_type:
         ser.write(b'0')
         print("\033[31m开发板灯灭后才能进行下次测试操作\033[0m")
         while True:
-            if device_type == 1:
-                pygame.event.pump()
-                before_axis_value = selected_gamepad.get_axis(axis_num)
             _ =get_end_time() # 等待手柄/键鼠信号
             ser.write(b'D')
             while not ser.in_waiting:
