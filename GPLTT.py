@@ -201,9 +201,8 @@ except Exception as e:
     print(e)
     input("按回车退出...")
     exit()
-print("串口已连接")
-time.sleep(2)
-# input("按回车开始测试...")
+print("串口已连接, 等待3秒初始化...")
+time.sleep(3)
 # 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
 ser.write(send_time_interval.encode('utf-8'))
