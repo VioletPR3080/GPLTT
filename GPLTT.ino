@@ -31,7 +31,7 @@ void setup() {
     while (1){
       while (digitalRead(pin1)) {
         ;
-      }// 等待键盘被按下
+      }// 等待测设备触发
       startTime = micros();
       digitalWrite(LED_BUILTIN, HIGH);
       clearSerialBuffer();
