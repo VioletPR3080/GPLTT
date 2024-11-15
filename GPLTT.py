@@ -203,7 +203,6 @@ except Exception as e:
     exit()
 print("串口已连接, 等待3秒初始化...")
 print(f"程序运行后测试开始前\033[31m请勿触发待测设备\033[0m, 设备触发时长应小于\033[31m{test_interval_ms}ms\033[0m")
-print("按下数字键以选择")
 time.sleep(3)
 # 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
@@ -214,6 +213,7 @@ while not ser.in_waiting:
 print("测试间隔时间已被接收")
 print("  ")
 ser.reset_input_buffer()
+print("按下数字键以选择")
 output_type = let_you_choose("请选择设备输出类型: ", ["程序检测设备输出", "下位机检测音频输出"])
 match output_type:
     case 0 :
