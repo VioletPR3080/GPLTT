@@ -202,6 +202,8 @@ except Exception as e:
     input("按回车退出...")
     exit()
 print("串口已连接, 等待3秒初始化...")
+print(f"程序运行后测试开始前\033[31m请勿触发待测设备\033[0m, 设备触发时长应小于\033[31m{test_interval_ms}ms\033[0m")
+print("按下数字键以选择")
 time.sleep(3)
 # 发送测试间隔时间
 send_time_interval = f"{test_interval_ms}\n"
