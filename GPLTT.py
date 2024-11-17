@@ -11,6 +11,7 @@ import json
 from collections import deque
 print("space.bilibili.com/167480068")
 print("repo: github.com/VioletPR3080/GPLTT")
+print("version: 0.3.1")
 
 def refresh_options(prompt):
     match prompt:
