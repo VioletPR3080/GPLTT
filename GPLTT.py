@@ -230,7 +230,7 @@ match output_type:
                 judge_axis = trigger_down
         get_end_time = choose_get_end_time(device_type)
         ser.write(b'0')
-        print("\033[31m开发板灯灭后才能进行下次测试操作\033[0m")
+        print(f"每次测试引脚接地时开发板上的灯会亮起\n当开发板接收到信号时, 灯会再亮\033[31m{test_interval_ms}ms\033[0m后灭\n\033[31m灯灭后才能进行下次测试操作\033[0m")
         while True:
             _ =get_end_time() # 等待手柄/键鼠信号
             ser.write(b'D')
@@ -245,7 +245,7 @@ match output_type:
         # 下位机检测音频输出
         print("关掉bgm, 只保留游戏操作音效, 音量调到最大")
         print("开始测试引脚接地和游戏音频输出的时间差")
-        print("\033[31m开发板灯灭后才能进行下次测试\033[0m")
+        print(f"每次测试引脚接地时开发板上的灯会亮起\n当开发板接收到信号时, 灯会再亮\033[31m{test_interval_ms}ms\033[0m后灭\n\033[31m灯灭后才能进行下次测试操作\033[0m")
         ser.write(b'2')
         while True:
             ser.reset_input_buffer()
